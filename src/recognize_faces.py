@@ -27,7 +27,16 @@ while True:
         break
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    faces = CASCADE.detectMultiScale(gray, 1.3, 5)
+    gray = cv2.equalizeHist(gray)
+
+    faces = CASCADE.detectMultiScale(
+        gray,
+        scaleFactor=1.05,
+        minNeighbors=4,
+        minSize=(60, 60),
+        flags=cv2.CASCADE_SCALE_IMAGE
+    )
+
 
     for (x, y, w, h) in faces:
         roi = gray[y:y+h, x:x+w]
