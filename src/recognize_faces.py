@@ -37,7 +37,6 @@ while True:
         flags=cv2.CASCADE_SCALE_IMAGE
     )
 
-
     for (x, y, w, h) in faces:
         roi = gray[y:y+h, x:x+w]
         roi = cv2.resize(roi, (200, 200))
