@@ -2,6 +2,8 @@
 
 Este projeto simples utiliza OpenCV para capturar imagens de rostos, treinar um modelo de reconhecimento facial e identificar pessoas em tempo real usando sua webcam local.
 
+<img width="640" height="480" alt="Reconhecimento" src="https://github.com/user-attachments/assets/08ac6962-23d4-4ed3-8097-b5a192404e78" />
+
 ---
 
 ## Funcionalidades
