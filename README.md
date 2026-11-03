@@ -1,110 +1,110 @@
-# Reconhecimento Facial com OpenCV
+# Face Recognition with OpenCV
 
-Este projeto simples utiliza OpenCV para capturar imagens de rostos, treinar um modelo de reconhecimento facial e identificar pessoas em tempo real usando sua webcam local.
+A simple project that uses OpenCV to capture face images, train a face recognition model and identify people in real time through your local webcam.
 
-<img width="640" height="480" alt="Reconhecimento" src="https://github.com/user-attachments/assets/08ac6962-23d4-4ed3-8097-b5a192404e78" />
-
----
-
-## Funcionalidades
-
-- Captura de imagens faciais a partir da webcam local
-- Treinamento de modelo LBPH para reconhecimento facial
-- Reconhecimento em tempo real com indicação do nome e confiança
-- Armazenamento organizado das imagens capturadas por pessoa
+<img width="640" height="480" alt="Recognition" src="https://github.com/user-attachments/assets/08ac6962-23d4-4ed3-8097-b5a192404e78" />
 
 ---
 
-## Requisitos
+## Features
+
+- Capture face images from the local webcam
+- LBPH model training for face recognition
+- Real-time recognition showing the name and confidence
+- Captured images stored per person
+
+---
+
+## Requirements
 
 - Python 3.6+
-- OpenCV (`opencv-python` e `opencv-contrib-python`)
+- OpenCV (`opencv-python` and `opencv-contrib-python`)
 - NumPy
-- pickle (biblioteca padrão do Python)
+- pickle (Python standard library)
 
-Ou utilize o Docker (veja abaixo).
+Or use Docker (see below).
 
-## Uso
+## Usage
 
-### 1. Capturar imagens do rosto
+### 1. Capture face images
 
-Execute o script `src/capture_faces.py` para capturar imagens da pessoa que deseja reconhecer:
+Run `src/capture_faces.py` to capture images of the person you want to recognize:
 
 ```bash
 python src/capture_faces.py
 ```
 
-Digite o nome da pessoa quando solicitado e mantenha o rosto visível para a câmera. O script salvará até 50 imagens automaticamente.
+Enter the person's name when prompted and keep your face visible to the camera. The script saves up to 50 images automatically.
 
 ---
 
-### 2. Treinar o modelo
+### 2. Train the model
 
-Após capturar imagens de todas as pessoas desejadas, execute o script de treinamento para criar o modelo:
+After capturing images of everyone you want to recognize, run the training script to build the model:
 
 ```bash
 python src/train_faces.py
 ```
 
-Esse script lê as imagens na pasta `data/`, treina o modelo LBPH e salva o arquivo `face_model.yml` e o arquivo `labels.pickle`.
+It reads the images in the `data/` folder, trains the LBPH model and saves `face_model.yml` and `labels.pickle`.
 
 ---
 
-### 3. Reconhecer rostos em tempo real
+### 3. Recognize faces in real time
 
-Para rodar o reconhecimento facial ao vivo usando a webcam local:
+To run live face recognition on the local webcam:
 
 ```bash
 python src/recognize_faces.py
 ```
 
-O vídeo exibirá um retângulo verde em torno dos rostos reconhecidos com o nome e a confiança, ou "Desconhecido" para faces não reconhecidas.
+The video shows a green rectangle around recognized faces with the name and confidence, or "Unknown" for faces it does not recognize.
 
 ---
 
-## Utilizando com Docker
+## Running with Docker
 
-Você pode rodar todo o projeto facilmente usando Docker, sem precisar instalar dependências no seu sistema:
+You can run the whole project with Docker, without installing dependencies on your system:
 
-### 1. Build da imagem
+### 1. Build the image
 
 ```bash
 docker build -t face-recognitor .
 ```
 
-### 2. Executando os scripts
+### 2. Run the scripts
 
-#### Capturar imagens:
+#### Capture images:
 ```bash
 docker run --rm -it --device=/dev/video0:/dev/video0 face-recognitor python src/capture_faces.py
 ```
 
-#### Treinar modelo:
+#### Train the model:
 ```bash
 docker run --rm -it face-recognitor python src/train_faces.py
 ```
 
-#### Reconhecer rostos:
+#### Recognize faces:
 ```bash
 docker run --rm -it --device=/dev/video0:/dev/video0 face-recognitor
 ```
 
-> Obs: O parâmetro `--device=/dev/video0:/dev/video0` é necessário para dar acesso à webcam ao container.
+> Note: `--device=/dev/video0:/dev/video0` gives the container access to the webcam.
 
 ---
 
-## Configuração da webcam
+## Webcam configuration
 
-Por padrão, o código utiliza a webcam local com índice `0`. Caso queira usar outra câmera (exemplo: webcam do celular via DroidCam), ajuste o índice no código.
-
----
-
-## Licença
-
-Este projeto é open-source e livre para uso e modificação.
+By default the code uses the local webcam at index `0`. To use another camera (for example a phone webcam through DroidCam), change the index in the code.
 
 ---
 
-## Autor
+## License
+
+This project is open source and free to use and modify.
+
+---
+
+## Author
 
 Matheus Silvano Pereira
